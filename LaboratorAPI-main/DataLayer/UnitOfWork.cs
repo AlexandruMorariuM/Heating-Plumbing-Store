@@ -1,24 +1,28 @@
-﻿using DataLayer.Repositories;
+﻿
+using DataLayer.Repositories;
 
 namespace DataLayer
 {
     public class UnitOfWork
     {
-        public StudentsRepository Students { get; }
-        public ClassRepository Classes { get; }
+        public OrderRepository Orders { get; }
+        public UserRepository Users { get; }
+        public ItemRepository Items { get; }
 
         private readonly AppDbContext _dbContext;
 
         public UnitOfWork
         (
             AppDbContext dbContext,
-            StudentsRepository studentsRepository,
-            ClassRepository classes
+            OrderRepository orders,
+            UserRepository users,
+            ItemRepository items
         )
         {
             _dbContext = dbContext;
-            Students = studentsRepository;
-            Classes = classes;
+            Orders = orders ;
+            Users= users;
+            Items = items;
         }
 
         public void SaveChanges()
