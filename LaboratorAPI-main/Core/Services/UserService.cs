@@ -15,17 +15,22 @@ namespace Core.Services
 
         public List<User> GetAll()
         {
-            var results = unitOfWork.Users.GetAll();
-
-            return results;
+            try
+            {
+                var results = unitOfWork.Users.GetAll();
+                return results;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Core.Services => List<User> GetAll(): " + e.Message);
+                throw new Exception("Error while reading all users! ", e);
+            }
         }
 
         public UserDto GetById(int userId)
         {
             var user = unitOfWork.Users.GetById(userId);
-
             var result = user.ToUserDto();
-
             return result;
         }
 

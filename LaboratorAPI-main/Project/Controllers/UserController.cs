@@ -14,7 +14,7 @@ namespace Project.Controllers
             this._userService = userService;
         }
 
-        [HttpGet("/get-all")]
+        [HttpGet("/get-all-users")]
         public ActionResult<List<User>> GetAll()
         {
             var results = _userService.GetAll();
